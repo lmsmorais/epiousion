@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<clientes>
+  <cliente>
+    <id>1</id>
+    <nome>Huguinho</nome>
+    <telefone>(11) 1111-1111</telefone>
+    <email>teste1@teste.com.br</email>
+    <endereco>
+      <id>1</id>
+      <rua>Rua Terra</rua>
+      <numero>321</numero>
+      <bairro>Via Lactea</bairro>
+      <cep>54321-876</cep>
+      <cidade>RJ</cidade>
+      <estado>Buzios</estado>
+    </endereco>
+  </cliente>
+  <cliente>
+    <id>2</id>
+    <nome>Zezinho</nome>
+    <telefone>(22) 2222-2222</telefone>
+    <email>teste2@teste.com.br</email>
+    <endereco>
+      <id>2</id>
+      <rua>USS Enterprise 1701</rua>
+      <numero>123</numero>
+      <bairro>Via Lactea</bairro>
+      <cep>12345-678</cep>
+      <cidade>Rio de Janeiro</cidade>
+      <estado>RJ</estado>
+    </endereco>
+  </cliente>
+  <cliente>
+    <id>3</id>
+    <nome>Luizinho</nome>
+    <telefone>(33) 3333-3333</telefone>
+    <email>teste3@teste.com.br</email>
+    <endereco>
+      <id>2</id>
+      <rua>USS Enterprise 1701</rua>
+      <numero>123</numero>
+      <bairro>Via Lactea</bairro>
+      <cep>12345-678</cep>
+      <cidade>Rio de Janeiro</cidade>
+      <estado>RJ</estado>
+    </endereco>
+  </cliente>
+  <cliente>
+    <id>4</id>
+    <nome>Donald</nome>
+    <telefone>(44) 4444-4444</telefone>
+    <email>teste4@teste.com.br</email>
+    <endereco>
+      <id>2</id>
+      <rua>USS Enterprise 1701</rua>
+      <numero>123</numero>
+      <bairro>Via Lactea</bairro>
+      <cep>12345-678</cep>
+      <cidade>Rio de Janeiro</cidade>
+      <estado>RJ</estado>
+    </endereco>
+  </cliente>
+  <cliente>
+    <id>5</id>
+    <nome>Tio Patinhas</nome>
+    <telefone>(55) 5555-55555</telefone>
+    <email>teste5@teste.com.br</email>
+    <endereco>
+      <id>1</id>
+      <rua>Rua Terra</rua>
+      <numero>321</numero>
+      <bairro>Via Lactea</bairro>
+      <cep>54321-876</cep>
+      <cidade>RJ</cidade>
+      <estado>Buzios</estado>
+    </endereco>
+  </cliente>
+</clientes>

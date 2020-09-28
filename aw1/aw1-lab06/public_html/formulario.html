@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Criação Dinâmica de Elementos HTML</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/tabelas.css">
+
+        <script>
+            <!--
+            var contador = 2;
+            function adicionarLinha() {
+                /*Adicionando a variável tabela, o elemento id da tabela, atrvés de document
+                para tratar a janela que exibe o documento HTML*/
+                var tabela = document.getElementById("tabelaContatos");
+
+                /*Manipulando a árvore
+                criando um elemento tr = tabela*/
+                var linha = document.createElement("tr");
+
+                /*Adicionando contador ao esquema*/
+                var idLinha = "linha" + contador;
+
+                /*Manipulando atributo*/
+                linha.setAttribute("id", idLinha);
+
+                /*adicionando as linha na tabela*/
+                var colunaUm = document.createElement("td");
+                var colunaDois = document.createElement("td");
+                var colunaTres = document.createElement("td");
+                var colunaQuatro = document.createElement("td");
+
+                /*appendChild para novo elemento, createTextNode para criar elemento manipulado*/
+                colunaUm.appendChild(document.createTextNode("Nome:"));
+
+                /*Adicionando elemento nome para entrada */
+                var tfNome = document.createElement("input");
+
+                /*Manipulando atributos de acordo com o enunciado*/
+                tfNome.setAttribute("type", "text");
+                tfNome.setAttribute("size", 20);
+                tfNome.setAttribute("name", "nome" + contador);
+
+                /*Adicionando elemento tfName a segunda coluna*/
+                colunaDois.appendChild(tfNome);
+
+                /*Elemento manipulado*/
+                colunaTres.appendChild(document.createTextNode("Telefone:"));
+
+                /*Adicionando elemento telefone para entrada*/
+                var tfTelefone = document.createElement("input");
+
+                /*Manipulando atributos de acordo com o enunciado*/
+                tfTelefone.setAttribute("type", "text");
+                tfTelefone.setAttribute("size", 10);
+                tfTelefone.setAttribute("name", "telefone" + contador++);
+                
+                /*adicionando elemento tfTelefone na quarta coluna*/
+                colunaQuatro.appendChild(tfTelefone);
+
+                /*atribuindo a ordem para todas as linhas*/
+                linha.appendChild(colunaUm);
+                linha.appendChild(colunaDois);
+                linha.appendChild(colunaTres);
+                linha.appendChild(colunaQuatro);
+
+                //APICIONAL
+                /*Criando quinta coluna para remover dados*/
+                var colunaCinco = document.createElement("td");
+
+                /*Adicionando elemento ao documento*/
+                var btRemover = document.createElement("input");
+
+                /*Manipulando atributos*/
+                btRemover.setAttribute("type","button");
+                btRemover.setAttribute("value", "Remover Contato");
+                btRemover.setAttribute("onClick","removerlinha('"+idLinha+"');");
+
+                /*atribuindo a coluna, a variável btRemover */
+                colunaCinco.appendChild(btRemover);
+                linha.appendChild(colunaCinco)
+
+                /*atribuindo colunaCinco a tabela*/
+                tabela.appendChild(linha);
+             }
+
+             //OPCIONALL
+            function removerLinha(linhaId) {
+                var linha = document.getElementById(linhaId);
+                /*parentNode para retornar o nó Node da estrutura DOM*/
+                linha.parentNode.removeChild(linha);
+            }
+            
+            -->
+        </script>
+
+    </head>
+    <body>
+        <div class="tabelaGC">
+
+            <table>
+                <tr>
+                    <td class="coluna1"></td>
+                    <td class="coluna2">Criação Dinâmica de Elementos HTML</td>
+                    <td class="coluna3"></td>
+                </tr>
+            </table>
+
+            <form name="formulario" action="http://www.globalcode.com.br" method="post">
+                <fieldset>
+                    <legend>Cadastro de Contatos</legend>
+                    <input type="button" onclick="adicionarLinha()" value="Adicionar">
+                    <table id="tabelaContatos">
+                        <tr id="linha1">
+                            <td>
+                                Nome:
+                            </td>
+                            <td>
+                                <input name="nome1" type="text" size="20">
+                            </td>
+                            <td>
+                                Telefone:
+                            </td>
+                            <td>
+                                <input name="telefone1" type="text" size="10">
+                            </td>
+                            <td>
+                                <input type='button' onclick="removerLinha('linha1');" value='Remover contato' />
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+            </form>
+        </div>
+    </body>
+</html>
+

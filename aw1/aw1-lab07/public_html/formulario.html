@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cadastro de Clientes</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/tabelas.css">
+
+        <script>
+            <!--
+            function validaTelefone(){
+                // 1. Obtenha o elemento que armazena o telefone e armazene na variável
+                //    var telefone que será utilizada na validação
+                var telefone = document.getElementById("telefone")
+
+                if (telefone.value.length < 9) {
+                    alert("Telefone inválido.");
+                    telefone.focus();
+                    return false;
+                }else
+                    return true;
+            }
+            function validaEmail(){
+                // 2. Obtenha o elemento que armazena o e-mail e armazene na variável
+                //    var email que será utilizada na validação
+                var email = document.getElementById("email");
+
+                posicaoArroba=email.value.indexOf("@");
+                posicaoPonto=email.value.indexOf(".");
+                // Se a arroba estiver na primeira posicao e
+                // o ponto nao estetiver presente ou estiver grudado na arroba, o e-mail é inválido
+                if (posicaoArroba < 1 || posicaoPonto-posicaoArroba < 2) {
+                    alert("e-mail inválido.");
+                    email.focus();
+                    return false;
+                }else
+                    return true;
+            }
+            function validaNumero(){
+                // 3. Obtenha o elemento que armazena o numero e armazene na variável
+                //    var numero que será utilizada na validação
+                var numero = document.getElementById("numero");
+        
+                var valor = parseFloat(numero.value);
+                if(isNaN(valor)){
+                    alert("Número inválido.");
+                    numero.focus();
+                    return false;
+                }else
+                    return true;
+            }
+            function validaCep(){
+                // 4. Obtenha o elemento que armazena o cep e armazene na variável
+                //    var cep que será utilizada na validação
+                var cep = document.getElementById("cep");
+
+                if (cep.value.length != 9) {
+                    alert("CEP inválido.");
+                    cep.focus();
+                    return false;
+                }else
+                    return true;
+            }
+            function validaEstado(){
+                // 5. verifique se o estado contém apenas dois caracteres
+                if(estado.length > 2){
+                    alert("Estado inválido !!")
+                    estado.focus;
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            function validacao(thisform){
+                for(var i=0; i<thisform.length; i++){
+                    var campo = thisform.elements[i];
+                    if(campo.type == "text"){
+                        if(campo.value == null || campo.value==""){
+                            alert("Preenchimento obrigatório do campo "+campo.name+".");
+                            campo.focus();
+                            return false;
+                        }
+                    }
+                }
+                if (!validaTelefone() || !validaEmail() || !validaNumero() || !validaCep() || !validaEstado()){
+                    return false;
+                }
+            }
+            -->
+        </script>
+        
+    </head>
+    <body>
+        <div class="tabelaGC">
+
+            <table>
+                <tr>
+                    <td class="coluna1"></td>
+                    <td class="coluna2">Cadastro de Clientes</td>
+                    <td class="coluna3"></td>
+                </tr>
+            </table>
+
+            <form action="processaForm" method="post" onsubmit="return validacao(this);">
+                <fieldset>
+                    <legend>Dados do cliente</legend>
+                    <table>
+                        <tr>
+                            <td><label for="nome">Nome:</label></td>
+                            <td colspan="3">
+                                <input name="nome" id="nome" type="text" size="75" maxlength="255">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="telefone">Telefone: (0000-0000)</label></td>
+                            <td><input name="telefone" id="telefone" type="text" size="16"></td>
+                            <td><label for="email">Email:</label></td>
+                            <td><input name="email" id="email" type="text" size="42"></td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <table>
+                        <tr>
+                            <td><label for="endereco">Rua/Av:</label></td>
+                            <td><input name="endereco" id="endereco" type="text" size="40" maxlength="255"></td>
+                            <td><label for="numero">Número:</label></td>
+                            <td><input name="numero" id="numero" type="text" size="5" maxlength="5"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="bairro">Bairro:</label></td>
+                            <td><input name="bairro" id="bairro" type="text"></td>
+                            <td><label for="cep">CEP: (00000-000)</label></td>
+                            <td><input name="cep" id="cep" type="text" size="8"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="cidade">Cidade:</label></td>
+                            <td><input name="cidade" id="cidade" type="text"></td>
+                            <td><label for="estado">Estado: (XX)</label></td>
+                            <td><input name="estado" id="estado" type="text" size="1" maxlength="2"></td>
+                        </tr>
+                    </table>
+                    <input type="image" src="images/salvar.gif">
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cadastro de Clientes</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/tabelas.css">
+
+        <script>
+            <!--
+            function notificaErro(idElemento) {
+                var oElemento = document.getElementById(idElemento);
+                alert("Campo " + idElemento + " inválido.");
+                // 1. Altere a cor de fundo do elemento
+                oElemento.style.background="red";
+                // 2. Altere a cor da fonte do elemento
+                oElemento.style.color="yellow";
+                // 3. Leve o foco para o elemento
+                oElemento.focus()
+
+            }
+            function retornaCor(idElemento) {
+                var oElemento = document.getElementById(idElemento);
+                // 4. Volte a cor original do elemento
+                oElemento.style.background="";
+                // 5. Mude a cor da fonte para a cor original
+                oElemento.style.color="";
+
+            }
+
+            function validaTelefone() {
+                var telefone = document.getElementById('telefone');
+                if (telefone.value.length < 9) {
+                    notificaErro("telefone");                    
+                    return false;
+                }else{
+                    retornaCor("telefone");
+                    return true;
+                }
+            }
+            function validaEmail() {
+                var email = document.getElementById('email');
+
+                var posicaoArroba = email.value.indexOf("@");
+                var posicaoPonto = email.value.indexOf(".");
+                // Se a arroba estiver na primeira posicao e
+                // o ponto nao estetiver presente ou estiver grudado na arroba, o e-mail é inválido
+                if (posicaoArroba < 1 || posicaoPonto - posicaoArroba < 2) {
+                      notificaErro("email");
+                      return false;
+                }else{
+                    retornaCor("email");
+                    return true;
+                }
+            }
+            function validaNumero() {
+                var numero = document.getElementById('numero');
+
+                var valor = parseFloat(numero.value);
+                if (isNaN(valor)) {
+                    notificaErro("numero");
+                    return false;
+                }else{
+                    retornaCor("numero");
+                    return true;
+                }
+            }
+            function validaCep() {
+                var cep = document.getElementById('cep');
+                if (cep.value.length != 9) {
+                    notificaErro("cep");
+                    return false;
+                }else{
+                    retornaCor("cep");
+                    return true;
+                }
+            }
+            function validaEstado() {
+                var estado = document.getElementById('estado');
+                if (estado.value.length != 2) {
+                    notificaErro("estado");
+                    return false;
+                }else{
+                    retornaCor("estado");
+                    return true;
+                }
+
+            }
+            function validacao(thisform) {
+                for (var i = 0; i < thisform.length; i++) {
+                    var campo = thisform.elements[i];
+                    if (campo.type == "text") {
+                        if (campo.value == null || campo.value == "") {
+                            notificaErro(campo.id);
+                            return false;
+                        } else {
+                            retornaCor(campo.id);
+                        }
+                    }
+                }
+                if (!validaTelefone() || !validaEmail() || !validaNumero() || !validaCep() || !validaEstado()) {
+                    return false;
+                }
+            }
+  -->
+        </script>
+
+    </head>
+    <body>
+        <div class="tabelaGC">
+
+            <table>
+                <tr>
+                    <td class="coluna1"></td>
+                    <td class="coluna2">Cadastro de Clientes</td>
+                    <td class="coluna3"></td>
+                </tr>
+            </table>
+
+            <form action="processaForm" method="post" onsubmit="return validacao(this);">
+                <fieldset>
+                    <legend>Dados do cliente</legend>
+                    <table>
+                        <tr>
+                            <td><label for="nome">Nome:</label></td>
+                            <td colspan="3">
+                                <input name="nome" id="nome" type="text" size="75" maxlength="255">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="telefone">Telefone: (0000-0000)</label></td>
+                            <td><input name="telefone" id="telefone" type="text" size="16"></td>
+                            <td><label for="email">Email:</label></td>
+                            <td><input name="email" id="email" type="text" size="42"></td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <table>
+                        <tr>
+                            <td><label for="endereco">Rua/Av:</label></td>
+                            <td><input name="endereco" id="endereco" type="text" size="40" maxlength="255"></td>
+                            <td><label for="numero">Número:</label></td>
+                            <td><input name="numero" id="numero" type="text" size="5" maxlength="5"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="bairro">Bairro:</label></td>
+                            <td><input name="bairro" id="bairro" type="text"></td>
+                            <td><label for="cep">CEP: (00000-000)</label></td>
+                            <td><input name="cep" id="cep" type="text" size="8"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="cidade">Cidade:</label></td>
+                            <td><input name="cidade" id="cidade" type="text"></td>
+                            <td><label for="estado">Estado: (XX)</label></td>
+                            <td><input name="estado" id="estado" type="text" size="1" maxlength="2"></td>
+                        </tr>
+                    </table>
+                    <input type="image" src="images/salvar.gif">
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

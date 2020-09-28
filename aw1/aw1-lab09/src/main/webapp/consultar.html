@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exemplo AJAX</title>
+        <meta charset="utf-8" />
+        <script>
+            var request;
+
+            function sendRequest(url, callback) {
+                //Inicializa o objeto XMLHttpRequest
+                request = new XMLHttpRequest();
+
+                //determina a função para processamento da requisição
+                request.onload = callback;
+
+                //configura a requisição
+                request.open("GET", url, true);
+
+                //envia a requisição
+                request.send();
+            }
+
+            function consultarCidades() {
+                //Determina o estado selecionado
+                var combo = document.getElementById("estado");
+                var estado = combo.options[combo.selectedIndex].value;
+                //Retorna quando nenhum estado for selecionado
+                if (estado == "-1")
+                    return;
+
+                //Monta a url de requisicao para o servidor
+                var url = "cadastroCliente?action=preencherCidades&estado="
+                        + estado;
+
+                //Envia requisicao
+                sendRequest(url, preencheCidades);
+            }
+
+            function preencheCidades() {
+                //Faz a leitura do documento XML recebido
+                var response = request.responseXML;
+                var raiz =
+                        response.getElementsByTagName("cidades").item(0);
+                var cidades = raiz.getElementsByTagName("cidade");
+
+                //Seleciona a caixa de seleção de cidades
+                var selectNode = document.getElementById("cidade");
+
+                //Apaga as opções atuais da caixa de seleção
+                selectNode.options.length = 0;
+
+                //preenche a caixa de opções com os valores recebidos
+                for (var i = 0; i < cidades.length; i++) {
+                    var txtCidade = cidades.item(i).firstChild.data;
+                    var option = new Option(txtCidade);
+                    selectNode.add(option, null);
+                }
+            }
+
+            function consultarCliente() {
+                // 1. Obter o id preenchido
+                var campoId = document.getElementByid("id");
+                var id = campoId.value;
+
+                // Retornar quando o valor for vazio
+                if (id == null | id == '') {
+                    return;
+                }
+
+                // 2. Monta URL de requisicao para o servidor
+                // Dica: usar cadastroCliente?action=consultarCliente&id=
+                var url = "cadastroCLiente?action=consultarCliente&id=" + id;
+
+
+                // 3. Envia requisicao
+                sendRequest(url, consultarCliente());
+
+            }
+
+            function preencheCliente() {
+                //Faz a leitura do documento XML recebido
+                var response = request.responseXML;
+                var cliente =
+                        response.getElementsByTagName("cliente").item(0);
+
+                var nome = cliente.getElementsByTagName("nome").item(0);
+                var campoNome = document.getElementById("nome");
+                campoNome.value = nome.firstChild.data;
+
+
+                // 4. Obter o elemento <telefone> do elemento cliente
+                var telefone = cliente.getElementsByTagName("telefone").item(0);
+
+                // 5. Obter o campo telefone do documento HTML
+                var campoTelefone = document.getElementById("telefone");
+
+                // 6. Atribuir o conteudo do elemento telefone no campo
+                campoTelefone.value = telefone.firstChild.data;
+
+
+                // 7. Obter o elemento <email> do elemento cliente
+                var email = cliente.getElementsByTagName("email").item(0);
+
+                // 8. Obter o campo email do documento HTML
+                var campoEmail = document.getElementById("email");
+
+                // 9. Atribuir o conteudo do elemento email no campo
+                campoEmail.value = email.firstChild.data;
+
+
+                // 10. Obter o elemento <endereco> do elemento cliente
+                var endereco = cliente.getElementsByTagName("endereco").item(0);
+
+
+
+                // 11. Obter o elemento <rua> do elemento endereco
+                var rua = endereco.getElementsByTagName("rua").item(0);
+
+                // 12. Obter o campo rua do documento HTML
+                var campoRua = document.getElementById("rua");
+
+                // 13. Atribuir o conteudo do elemento rua no campo
+                campoRua.value = rua.firstChild.data;
+
+
+                // 14. Obter o elemento <numero> do elemento endereco
+                var numero = endereco.getElementsByTagName("rua").item(0);
+
+                // 15. Obter o campo numero do documento HTML
+                var campoNumero = document.getElementById("numero").item(0);
+
+                // 16. Atribuir o conteudo do elemento numero no campo
+                campoNumero.value = numero.firstChild.data;
+
+                // 17. Obter o elemento <bairro> do elemento endereco
+                var bairro = endereco.getElementsByTagName("bairro").item(0);
+
+                // 18. Obter o campo bairro do documento HTML
+                var campoBairro = document.getElementById("bairro");
+
+                // 19. Atribuir o conteudo do elemento bairro no campo
+                campoBairro.value = bairro.firstChild.data;
+
+                // 20. Obter o elemento <cep> do elemento endereco
+                var cep = endereco.getElementsByTagName("cep").item(0);
+
+                // 21. Obter o campo cep do documento HTML
+                var campoCep = document.getElementById("cep");
+
+                // 22. Atribuir o conteudo do elemento cep no campo
+                campoCep.value = cep.firstChild.data;
+
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1>Cadastro de Clientes</h1>
+        <form action='/cadastroCliente' method='post'>
+            <fieldset><legend>Dados do cliente</legend>
+                <table>
+                    <tr>
+                        <td><label for='id'>ID:</label></td>
+                        <td colspan='3'>
+                            <input name='id' id='id' type='text'
+                                   size='5' maxlength='5'
+                                   onchange="consultarCliente()" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for='nome'>Nome:</label></td>
+                        <td colspan='3'>
+                            <input name='nome' id='nome' type='text'
+                                   size='75' maxlength='255' />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for='telefone'>Telefone: (0000-0000)
+                            </label>
+                        </td>
+                        <td><input name='telefone' id='telefone'
+                                   type='text' size='16' />
+                        </td>
+                        <td><label for='email'>Email:</label>
+                        </td>
+                        <td><input name='email' id='email' type='text'
+                                   size='37' />
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend>Endereço</legend>
+                <table>
+                    <tr>
+                        <td><label for='rua'>Rua/Av:</label></td>
+                        <td><input name='rua' id='rua' type='text'
+                                   size='40' maxlength='255' />
+                        </td>
+                        <td><label for='numero'>Número:</label></td>
+                        <td><input name='numero' id='numero' type='text'
+                                   size='8' maxlength='5' />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for='bairro'>Bairro:</label></td>
+                        <td><input name='bairro' id='bairro' type='text' />
+                        </td>
+                        <td><label for='cep'>CEP (00000-000):</label>
+                        </td>
+                        <td><input name='cep' id='cep' type='text'
+                                   size='8' />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for='estado'>Estado:</label></td>
+                        <td>
+                            <select name='estado' id='estado'
+                                    onchange='consultarCidades();'>
+                                <option value='-1'>Escolha um estado
+                                </option>
+                                <option value='MG'>MG</option>
+                                <option value='SP'>SP</option>
+                                <option value='RJ'>RJ</option>
+                            </select>
+                        </td>
+                        <td>
+                            <label for='cidade'>Cidade:</label>
+                        </td>
+                        <td><select name='cidade' id='cidade'
+                                    style="width:200px"></select>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <input type='submit' value="Salvar" />
+        </form>
+    </body>
+</html>
