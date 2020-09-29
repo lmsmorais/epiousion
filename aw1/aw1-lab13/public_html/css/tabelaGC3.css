@@ -1,0 +1,104 @@
+fieldset {  
+  border: 0pt; 
+}
+
+td.label {
+    text-align: right
+}
+
+td.button {
+    text-align: center
+}
+
+table.tabelaGC fieldset legend{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: bold;
+  color: #656297;
+  text-align: left;  
+  padding: 0px;
+  margin: 0px;
+}
+
+table.tabelaGC td{
+  /*Essencial para nao ficar um espaço entre a célula e a borda*/
+  margin: 0px;
+  padding: 0px;
+  border-collapse: collapse;    
+  border: 0pt solid red;
+}
+table.tabelaGC{  
+  border:1pt solid #EEEEEE;
+  width:100%;
+  /*Essencial para nao ficar um espaço entre a célula e a borda
+  Se for igual a separate pode-se definir border-spacing*/
+  border-collapse: collapse;  
+  
+}
+table.footer {
+    width:100%
+}
+
+table.tabelaGC thead {  
+  /* Essencial para nao ficar espaços entre as células no IE*/
+  border-collapse: collapse; 
+  width: 100%;      
+  background-color: #EEEEEE;	
+  /* Configuraçao do texto */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: bold;  
+  color: white;	
+  text-align: left;
+  text-indent: 6pt;  
+}
+
+table.tabelaGC thead td.coluna1{  
+  /* Fundo da célula */
+  background-color: #858495;
+  width: 250px;
+  background-image: url("../images/titulos/Tt_tabelas_transicao.gif");  
+  background-repeat: no-repeat;
+  background-position: right;
+  text-indent: 10px;
+}
+
+
+table.tabelaGC, table.tabelaGC tbody td label, table.tabelaGC input, table.tabelaGC select{
+  font-size: 10pt;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #858495;
+  font-weight: bold;
+  vertical-align: top;
+  margin-left: 15px;
+}
+
+table.tabelaGC a{
+  font-size: 10pt;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #656297;
+  font-weight: bold;
+  vertical-align: top;
+  margin-left: 15px;
+  cursor: pointer;  
+  text-decoration: none;
+}
+
+table.tabelaGC div{
+  font-size: 10pt;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #858495;
+  text-decoration: none;
+  font-weight: normal;
+  text-align: left;
+  vertical-align: top;
+  margin-left: 15px;
+}
+
+.GC_Normal2{
+  font-size: 10pt;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #858495;
+  font-weight: normal;
+  margin-left: 15px;
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cadastro de Cliente</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/tabelaGC3.css" />
+        <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>                                
+        <script src="js/funcoes.js"></script>
+        
+        <!-- 1. Carregue aqui o tema smoothness da biblioteca jQuery UI conforme exemplo da apostila -->
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.30.3/themes/smoothness/jquery-ui.css" />
+
+        <!-- 2. Configure aqui o uso da biblioteca jQuery UI -->
+        <script src="http://code.jquery/ui/1.30.3/jquery-ui.js"></script>
+        
+        <script>
+            $(document).ready(function() {
+                $("form").submit(validaForm);
+                //3. complete aqui o código pedido na apostila
+                //.tabs(), para uma única área de conteúdo com vários painéis
+                //cada uma associada a um cabeçalho em uma lista
+                $("#tabs").tabs();
+
+                //utilizando o .datepicker
+                $("#dataNascimento").datepicker({
+                    //formato de exibição da data
+                    dataFormat: "dd/mm/yy",
+
+                    //meses do ano em português
+                    monthNames: ["Jnaiero","Fevereiro","Março","Abril","Maio","Junho","julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
+
+                    //Selecionar ano em uma caixa combo
+                    changeYear: true,
+
+                    //Dias da semana em português
+                    dayNames: ["Segunda","Terça","Quarta","Quinta","Sexta"]
+
+                })
+
+
+
+            });
+        </script>
+    </head>
+    <body>
+
+        <form method="post" action="controller">
+            <div id="tabs">
+                <ul>
+                    <li><a href="#dadosCliente">Dados do Cliente</a></li>
+                    <li><a href="#dadosPagamento">Dados de Pagamento</a></li>
+                </ul>
+
+                <!-- Inicio da insercao dos dados do cliente -->
+                <table id="dadosCliente" class="tabelaGC" border="1">
+                    <thead>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>            
+                                        <td class="coluna1">Cadastro do Cliente</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>      
+                                <fieldset>
+                                    <legend>Dados do Cliente</legend>
+                                    <table>
+                                        <tr>
+                                            <td class="label"><label for="nome">Nome:</label></td>
+                                            <td colspan="3">
+                                                <input name="nome" id="nome" type="text" size="75"
+                                                       maxlength="255" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="email">Email:</label></td>
+                                            <td>
+                                                <input name="email" id="email" type="text" size="50"
+                                                       maxlength="50" />
+                                            </td>
+                                            <td class="label"><label for="telefone">Telefone:</label></td>
+                                            <td>
+                                                <input name="telefone" id="telefone" type="text" size="20"
+                                                       maxlength="50" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="email">Data Nascimento:</label></td>
+                                            <td>
+                                                <input name="dataNascimento" id="dataNascimento" type="text" size="10"
+                                                       maxlength="10" />
+                                            </td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </table>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Endere&ccedil;o</legend>
+                                    <table>
+                                        <tr>
+                                            <td class="label"><label for="enderecoRua">Rua/Av:</label></td>
+                                            <td>
+                                                <input name="enderecoRua" id="enderecoRua" type="text"
+                                                       size="40" maxlength="50" />
+                                            </td>
+                                            <td class="label"><label for="enderecoNumero">N&uacute;mero:</label></td>
+                                            <td>
+                                                <input name="enderecoNumero" id="enderecoNumero" type="text"
+                                                       size="10" maxlength="10" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="enderecoBairro">Bairro:</label></td>
+                                            <td>
+                                                <input name="enderecoBairro" id="enderecoBairro" type="text"
+                                                       size="40" maxlength="50" />
+                                            </td>
+                                            <td class="label"><label for="enderecoCep">CEP:</label></td>
+                                            <td>
+                                                <input name="enderecoCep" id="enderecoCep" type="text"
+                                                       size="10" maxlength="10" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="enderecoCidade">Cidade:</label></td>
+                                            <td>
+                                                <input name="enderecoCidade" id="enderecoCidade" type="text"
+                                                       size="40" maxlength="50" />
+                                            </td>
+                                            <td class="label"><label for="enderecoEstado">Estado:</label></td>
+                                            <td>
+                                                <input name="enderecoEstado" id="enderecoEstado" type="text"
+                                                       size="2" maxlength="2" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </fieldset>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- fim da insercao dos dados do cliente -->
+
+                <!-- Início da insercao dos dados de pagamento-->
+                <table id="dadosPagamento" class="tabelaGC" border="1">
+
+                    <thead>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>            
+                                        <td class="coluna1">Dados do pagamento</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+
+                        <tr>
+                            <td>
+                                <fieldset>
+                                    <legend>Dados do Cart&atilde;o</legend>
+                                    <table>
+                                        <tr>
+                                            <td class="label"><label for="bandeira">Bandeira do cart&atilde;o:</label></td>
+                                            <td>
+                                                <select id="bandeira" name="bandeira" size="1">
+                                                    <option value="1" selected>Visa</option>
+                                                    <option value="2">Mastercard</option>
+                                                    <option value="3">American Express</option>
+                                                    <option value="4">Dinners</option>
+                                                </select>
+                                            </td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="numeroCartao">N&uacute;mero do cart&atilde;o:</label></td>
+                                            <td>
+                                                <input name="numeroCartao" id="numeroCartao" type="text" 
+                                                       size="21" maxlength="50" />
+                                            </td>
+                                            <td class="label"><label for="numeroVerificacao">C&oacute;digo de verifica&ccedil;&atilde;o:</label></td>
+                                            <td>
+                                                <input name="numeroVerificacao" id="numeroVerificacao" type="text" 
+                                                       size="5" maxlength="5" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="nomeTitular">Nome do titular:</label></td>
+                                            <td>
+                                                <input name="nomeTitular" id="nomeTitular" type="text" 
+                                                       size="21" maxlength="50" />
+                                            </td>
+                                            <td class="label"><label for="dataValidadeCartao">Data de Validade:</label></td>
+                                            <td>
+                                                <input name="dataValidadeCartao" id="dataValidadeCartao" type="text" 
+                                                       size="5" maxlength="10" /><span class="GC_Normal2">(formato MM/yy)</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </fieldset>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- fim da insercao dos dados de pagamento-->
+            </div>    
+            <table class="footer">
+                <tr>
+                    <td class="button">
+                        <button type="submit" id="enviarPedido">Enviar</button> 
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+    </body>
+</html>
